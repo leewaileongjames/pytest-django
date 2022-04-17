@@ -1,0 +1,7 @@
+*.md
+results.xml
+
+.gitignore
+.git/
+
+venv/
