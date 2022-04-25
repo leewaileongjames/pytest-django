@@ -97,10 +97,9 @@ resource "aws_instance" "EC2-Instance" {
     instance_type = var.instance_type
     user_data = <<-EOF
 	#! /bin/bash
-	sudo yum update -y
-	curl -fsSL https://get.docker.com -o docker.sh && sudo sh docker.sh
-  sudo systemctl start docker
-  sudo usermod -aG docker ec2-user
+	sudo yum update -y && sudo yum install -y docker
+	sudo systemctl start docker
+	sudo usermod -aG docker ec2-user
 	EOF
     key_name = var.instance_keypair
     vpc_security_group_ids = [ 
